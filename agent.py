@@ -61,7 +61,7 @@ response = client.chat.completions.create(
 action_text = response.choices[0].message.content
 
 # 保存model生成的Action
-messages.append({"role": "user",
+messages.append({"role": "assistant",
                  "content": action_text})
 
 #将JSON字符串转换成Python字典
@@ -87,7 +87,7 @@ if action_name == "calculate":
 
     #将工具的执行结果加入上下文
     messages.append({
-        "role": "assistant",
+        "role": "user",
         "content": (
             f"工具执行结果（Observation） : {observation}\n"
             "请根据原始用户任务和工具结果，生成最终答案。"
